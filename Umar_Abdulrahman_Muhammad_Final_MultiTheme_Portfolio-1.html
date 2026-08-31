@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Umar Abdulrahman Muhammad | AI & Control Systems Engineer</title>
+    <meta name="description" content="Professional portfolio of Umar Abdulrahman Muhammad, a Computer Engineering student specializing in Control and Intelligent Systems and Artificial Intelligence at Ahmadu Bello University, Zaria.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #f4f7fb;
+            --bg2: #0b1736;
+            --bg3: #132653;
+            --glass: rgba(255,255,255,0.88);
+            --accent: #087fce;
+            --accent2: rgba(8,127,206,0.10);
+            --accent3: #6c4ce8;
+            --accent4: #f0a202;
+            --txt: #14213d;
+            --txt2: #52627a;
+            --muted: #7b879b;
+            --border: rgba(20,33,61,0.12);
+            --white: #ffffff;
+        }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family:'Inter',sans-serif; background:linear-gradient(135deg,#f4f7fb 0%,#eef5ff 48%,#f7f2ff 100%); color:var(--txt); overflow-x:hidden; line-height:1.6; }
+        ::-webkit-scrollbar { width:8px; }
+        ::-webkit-scrollbar-track { background:var(--bg); }
+        ::-webkit-scrollbar-thumb { background:var(--accent); border-radius:4px; }
+
+        /* ========== NAVIGATION ========== */
+        .navbar { position:fixed; top:0; left:0; right:0; z-index:1000; padding:1rem 2rem; background:rgba(255,255,255,0.94); backdrop-filter:blur(20px); border-bottom:1px solid var(--border); }
+        .nav-container { max-width:1200px; margin:0 auto; display:flex; justify-content:space-between; align-items:center; }
+        .logo { font-family:'JetBrains Mono',monospace; font-size:1.4rem; font-weight:700; color:var(--accent); text-decoration:none; }
+        .nav-links { display:flex; gap:1.5rem; list-style:none; }
+        .nav-links a { color:var(--txt2); text-decoration:none; font-size:0.85rem; font-weight:500; transition:color 0.3s; position:relative; }
+        .nav-links a:hover { color:var(--accent); }
+        .nav-links a::after { content:''; position:absolute; bottom:-4px; left:0; width:0; height:2px; background:var(--accent); transition:width 0.3s; }
+        .nav-links a:hover::after { width:100%; }
+        
+        .mobile-toggle { display:none; }
+        .mobile-btn { display:none; background:none; border:none; color:var(--txt); font-size:1.5rem; cursor:pointer; }
+
+        /* ========== SECTIONS (CSS Target Switching) ========== */
+        section { min-height:100vh; padding:6rem 2rem 4rem; max-width:1200px; margin:0 auto; display:none; opacity:0; transform:translateY(30px); transition:all 0.6s ease; }
+        
+        /* Show home by default if no hash, or whichever section matches the target hash */
+        #home { display:flex; opacity:1; transform:translateY(0); }
+        
+        :root:has(#about:target) #home,
+        :root:has(#education:target) #home,
+        :root:has(#skills:target) #home,
+        :root:has(#projects:target) #home,
+        :root:has(#hobbies:target) #home,
+        :root:has(#cv:target) #home,
+        :root:has(#contact:target) #home { display:none; opacity:0; }
+
+        :root:has(#about:target) #about,
+        :root:has(#education:target) #education,
+        :root:has(#skills:target) #skills,
+        :root:has(#projects:target) #projects,
+        :root:has(#hobbies:target) #hobbies,
+        :root:has(#cv:target) #cv,
+        :root:has(#contact:target) #contact { display:block; opacity:1; transform:translateY(0); }
+
+        .section-title { font-size:2.2rem; font-weight:800; margin-bottom:0.5rem; background:linear-gradient(135deg,#087fce,#6c4ce8); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+        .section-subtitle { color:var(--txt2); font-size:1rem; margin-bottom:2.5rem; }
+
+        /* ========== HOME ========== */
+        #home { align-items:center; justify-content:center; text-align:center; position:relative; }
+        #home::before { content:''; position:absolute; top:-50%; left:-50%; width:200%; height:200%; background:radial-gradient(circle at 18% 35%,rgba(8,127,206,0.16) 0%,transparent 34%),radial-gradient(circle at 82% 25%,rgba(108,76,232,0.13) 0%,transparent 32%),radial-gradient(circle at 75% 85%,rgba(240,162,2,0.10) 0%,transparent 28%); animation:float 20s ease-in-out infinite; pointer-events:none; }
+        @keyframes float { 0%,100%{transform:translate(0,0);} 33%{transform:translate(30px,-30px);} 66%{transform:translate(-20px,20px);} }
+        .hero-content { position:relative; z-index:1; }
+        .hero-badge { display:inline-block; padding:0.5rem 1.5rem; background:var(--accent2); border:1px solid var(--accent); border-radius:50px; color:var(--accent); font-family:'JetBrains Mono',monospace; font-size:0.8rem; margin-bottom:1.5rem; }
+        .hero-title { font-size:clamp(2.2rem,5vw,3.8rem); font-weight:800; line-height:1.1; margin-bottom:1rem; }
+        .hero-title .highlight { background:linear-gradient(135deg,#087fce,#6c4ce8,#f0a202); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+        .hero-subtitle { font-size:1.1rem; color:var(--txt2); margin-bottom:0.5rem; font-family:'JetBrains Mono',monospace; }
+        .hero-desc { max-width:600px; margin:1.5rem auto; color:var(--txt2); font-size:1rem; }
+        .hero-buttons { display:flex; gap:1rem; justify-content:center; margin-top:2rem; flex-wrap:wrap; }
+        .btn { padding:0.8rem 1.8rem; border-radius:8px; font-weight:600; font-size:0.9rem; cursor:pointer; transition:all 0.3s; text-decoration:none; display:inline-flex; align-items:center; gap:0.5rem; border:none; }
+        .btn-primary { background:linear-gradient(135deg,#087fce,#6c4ce8); color:var(--bg); box-shadow:0 8px 24px rgba(8,127,206,0.22); }
+        .btn-primary:hover { transform:translateY(-2px); box-shadow:0 12px 34px rgba(108,76,232,0.22); }
+        .btn-secondary { background:transparent; color:var(--txt); border:1px solid var(--border); }
+        .btn-secondary:hover { border-color:var(--accent); color:var(--accent); background:var(--accent2); }
+
+        /* ========== ABOUT ME ========== */
+        .about-grid { display:grid; grid-template-columns:1fr 1.5fr; gap:3rem; align-items:start; }
+        .about-image-frame { width:100%; aspect-ratio:1; background:linear-gradient(135deg,#e9f4ff,#f2edff); border-radius:16px; border:1px solid var(--border); display:flex; align-items:center; justify-content:center; font-size:5rem; position:relative; }
+        .about-image-frame::before { content:''; position:absolute; inset:-2px; background:linear-gradient(135deg,#087fce,#6c4ce8,#f0a202); border-radius:18px; z-index:-1; opacity:0.4; }
+        .about-stats { display:grid; grid-template-columns:repeat(2,1fr); gap:1rem; margin-top:1.5rem; }
+        .stat-card { background:var(--glass); border:1px solid var(--border); box-shadow:0 8px 30px rgba(20,33,61,0.06); border-radius:12px; padding:1.2rem; text-align:center; }
+        .stat-number { font-size:1.6rem; font-weight:800; color:var(--accent); font-family:'JetBrains Mono',monospace; }
+        .stat-label { font-size:0.8rem; color:var(--txt2); }
+        .about-text h3 { font-size:1.3rem; margin-bottom:0.75rem; }
+        .about-text p { color:var(--txt2); margin-bottom:0.75rem; font-size:0.95rem; }
+        .about-values { display:flex; flex-wrap:wrap; gap:0.5rem; margin-top:1rem; }
+        .value-tag { padding:0.4rem 0.9rem; background:var(--accent2); border:1px solid rgba(0,212,170,0.2); border-radius:50px; color:var(--accent); font-size:0.8rem; font-weight:500; }
+
+        /* ========== EDUCATIONAL BACKGROUND ========== */
+        .timeline { position:relative; padding-left:2rem; }
+        .timeline::before { content:''; position:absolute; left:0; top:0; bottom:0; width:2px; background:linear-gradient(to bottom,#087fce,#6c4ce8,transparent); }
+        .timeline-item { position:relative; padding-bottom:2.5rem; padding-left:1.5rem; }
+        .timeline-item::before { content:''; position:absolute; left:-2rem; top:0.4rem; width:10px; height:10px; background:var(--accent); border-radius:50%; border:3px solid var(--bg); box-shadow:0 0 0 3px var(--accent2); }
+        .timeline-date { font-family:'JetBrains Mono',monospace; color:var(--accent); font-size:0.8rem; font-weight:600; margin-bottom:0.4rem; }
+        .timeline-card { background:var(--glass); border:1px solid var(--border); box-shadow:0 8px 30px rgba(20,33,61,0.06); border-radius:14px; padding:1.25rem; backdrop-filter:blur(10px); transition:all 0.3s; }
+        .timeline-card:hover { border-color:var(--accent); transform:translateX(4px); }
+        .timeline-card h3 { font-size:1.1rem; margin-bottom:0.2rem; }
+        .timeline-card .institution { color:var(--accent); font-weight:600; font-size:0.9rem; margin-bottom:0.5rem; }
+        .timeline-card p { color:var(--txt2); font-size:0.9rem; }
+        .achievements { margin-top:0.75rem; display:flex; flex-wrap:wrap; gap:0.4rem; }
+        .achievement-tag { padding:0.2rem 0.6rem; background:rgba(20,33,61,0.05); border-radius:50px; font-size:0.75rem; color:var(--txt2); }
+
+        /* ========== TECHNICAL SKILLS ========== */
+        .skills-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:1.5rem; }
+        .skill-category { background:var(--glass); border:1px solid var(--border); box-shadow:0 8px 30px rgba(20,33,61,0.06); border-radius:14px; padding:1.5rem; }
+        .skill-category h3 { font-size:1rem; margin-bottom:1.2rem; display:flex; align-items:center; gap:0.5rem; }
+        .skill-category h3 .icon { width:32px; height:32px; background:var(--accent2); border-radius:8px; display:flex; align-items:center; justify-content:center; font-size:1rem; }
+        .skill-item { margin-bottom:1rem; }
+        .skill-header { display:flex; justify-content:space-between; margin-bottom:0.4rem; font-size:0.85rem; }
+        .skill-bar { height:7px; background:rgba(20,33,61,0.05); border-radius:4px; overflow:hidden; }
+        .skill-progress { height:100%; background:linear-gradient(90deg,#087fce,#6c4ce8); border-radius:4px; }
+
+        /* ========== PROJECTS ========== */
+        .projects-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:1.5rem; }
+        .project-card { background:var(--glass); border:1px solid var(--border); box-shadow:0 8px 30px rgba(20,33,61,0.06); border-radius:14px; overflow:hidden; transition:all 0.4s; }
+        .project-card:hover { transform:translateY(-6px); border-color:var(--accent); box-shadow:0 15px 35px rgba(0,212,170,0.08); }
+        .project-image { height:180px; background:linear-gradient(135deg,#e9f4ff,#f2edff); display:flex; align-items:center; justify-content:center; font-size:2.5rem; position:relative; }
+        .project-image::after { content:''; position:absolute; inset:0; background:linear-gradient(to top,rgba(20,20,30,0.9),transparent); }
+        .project-badge { position:absolute; top:0.75rem; left:0.75rem; background:var(--accent); color:var(--bg); padding:0.25rem 0.75rem; border-radius:50px; font-size:0.7rem; font-weight:700; z-index:2; }
+        .project-content { padding:1.25rem; }
+        .project-content h3 { font-size:1.1rem; margin-bottom:0.4rem; }
+        .project-content p { color:var(--txt2); font-size:0.9rem; margin-bottom:0.75rem; }
+        .project-tech { display:flex; flex-wrap:wrap; gap:0.4rem; margin-bottom:0.75rem; }
+        .tech-tag { padding:0.2rem 0.6rem; background:var(--accent2); border-radius:50px; font-size:0.75rem; color:var(--accent); font-family:'JetBrains Mono',monospace; }
+
+        /* ========== HOBBIES & INTERESTS ========== */
+        .hobbies-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:1.25rem; }
+        .hobby-card { background:var(--glass); border:1px solid var(--border); box-shadow:0 8px 30px rgba(20,33,61,0.06); border-radius:14px; padding:1.75rem; text-align:center; transition:all 0.4s; }
+        .hobby-card:hover { transform:scale(1.03); border-color:var(--accent); }
+        .hobby-icon { font-size:2.5rem; margin-bottom:0.75rem; display:block; }
+        .hobby-card h3 { font-size:1rem; margin-bottom:0.4rem; }
+        .hobby-card p { color:var(--txt2); font-size:0.85rem; }
+
+        /* ========== CURRICULUM VITAE ========== */
+        .cv-container { background:var(--glass); border:1px solid var(--border); box-shadow:0 8px 30px rgba(20,33,61,0.06); border-radius:14px; padding:2.5rem; max-width:800px; margin:0 auto; }
+        .cv-header { text-align:center; margin-bottom:1.5rem; padding-bottom:1.5rem; border-bottom:1px solid var(--border); }
+        .cv-header h2 { font-size:1.8rem; margin-bottom:0.3rem; }
+        .cv-header p { color:var(--txt2); font-size:0.9rem; }
+        .cv-section { margin-bottom:1.5rem; }
+        .cv-section h3 { font-size:1rem; color:var(--accent); margin-bottom:0.75rem; text-transform:uppercase; letter-spacing:1px; font-family:'JetBrains Mono',monospace; }
+        .cv-item { margin-bottom:1rem; }
+        .cv-item h4 { font-size:0.95rem; margin-bottom:0.15rem; }
+        .cv-item .cv-meta { color:var(--muted); font-size:0.8rem; margin-bottom:0.4rem; }
+        .cv-item p, .cv-item ul { color:var(--txt2); font-size:0.9rem; }
+        .cv-item ul { padding-left:1.25rem; margin-top:0.4rem; }
+        .cv-item ul li { margin-bottom:0.2rem; }
+        .cv-download { text-align:center; margin-top:1.5rem; padding-top:1.5rem; border-top:1px solid var(--border); }
+
+        /* ========== CONTACT ME ========== */
+        .contact-grid { display:grid; grid-template-columns:1fr 1fr; gap:3rem; }
+        .contact-info h3 { font-size:1.3rem; margin-bottom:0.75rem; }
+        .contact-info p { color:var(--txt2); margin-bottom:1.5rem; font-size:0.95rem; }
+        .contact-methods { display:flex; flex-direction:column; gap:1rem; }
+        .contact-method { display:flex; align-items:center; gap:0.75rem; padding:0.875rem; background:var(--glass); border:1px solid var(--border); box-shadow:0 8px 30px rgba(20,33,61,0.06); border-radius:10px; transition:all 0.3s; }
+        .contact-method:hover { border-color:var(--accent); transform:translateX(4px); }
+        .contact-method .icon { width:40px; height:40px; background:var(--accent2); border-radius:10px; display:flex; align-items:center; justify-content:center; font-size:1.25rem; flex-shrink:0; }
+        .contact-method .info h4 { font-size:0.85rem; margin-bottom:0.15rem; }
+        .contact-method .info p { color:var(--txt2); font-size:0.8rem; margin:0; }
+        .contact-form { background:var(--glass); border:1px solid var(--border); box-shadow:0 8px 30px rgba(20,33,61,0.06); border-radius:14px; padding:1.5rem; }
+        .form-group { margin-bottom:1.25rem; }
+        .form-group label { display:block; margin-bottom:0.4rem; font-size:0.85rem; font-weight:500; }
+        .form-group input, .form-group textarea { width:100%; padding:0.75rem 0.9rem; background:rgba(20,33,61,0.035); border:1px solid var(--border); border-radius:8px; color:var(--txt); font-family:'Inter',sans-serif; font-size:0.9rem; transition:all 0.3s; }
+        .form-group input:focus, .form-group textarea:focus { outline:none; border-color:var(--accent); box-shadow:0 0 0 3px var(--accent2); }
+        .form-group textarea { min-height:100px; resize:vertical; }
+        .social-links { display:flex; gap:0.75rem; margin-top:1.5rem; }
+        .social-links a { width:40px; height:40px; background:var(--glass); border:1px solid var(--border); box-shadow:0 8px 30px rgba(20,33,61,0.06); border-radius:10px; display:flex; align-items:center; justify-content:center; color:var(--txt2); text-decoration:none; font-size:1.1rem; transition:all 0.3s; }
+        .social-links a:hover { border-color:var(--accent); color:var(--accent); transform:translateY(-3px); }
+
+        /* ========== FOOTER ========== */
+        footer { background:linear-gradient(135deg,#0b1736,#132653); border-top:1px solid var(--border); padding:2.5rem 2rem 1.5rem; margin-top:3rem; }
+        .footer-content { max-width:1200px; margin:0 auto; display:grid; grid-template-columns:2fr 1fr 1fr; gap:2.5rem; margin-bottom:1.5rem; }
+        .footer-brand .logo { margin-bottom:0.75rem; display:inline-flex; }
+        .footer-brand p { color:rgba(255,255,255,0.72); font-size:0.85rem; line-height:1.6; }
+        .footer-links h4 { font-size:0.8rem; margin-bottom:0.75rem; color:var(--txt); text-transform:uppercase; letter-spacing:1px; }
+        .footer-links ul { list-style:none; }
+        .footer-links li { margin-bottom:0.4rem; }
+        .footer-links a { color:rgba(255,255,255,0.72); text-decoration:none; font-size:0.85rem; transition:color 0.3s; }
+        .footer-links a:hover { color:var(--accent); }
+        .footer-bottom { max-width:1200px; margin:0 auto; padding-top:1.5rem; border-top:1px solid var(--border); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.75rem; }
+        .footer-bottom p { color:rgba(255,255,255,0.58); font-size:0.8rem; }
+
+        /* ========== PURE CSS MOBILE MENU DROPDOWN ========== */
+        .mobile-toggle { display:none; }
+        .mobile-menu-container { display:none; flex-direction:column; background:rgba(255,255,255,0.98); position:fixed; top:65px; left:0; right:0; border-bottom:1px solid var(--border); padding:1rem 2rem; gap:1rem; z-index:999; }
+        .mobile-menu-container a { color:var(--txt); text-decoration:none; font-size:1rem; font-weight:600; }
+        .mobile-menu-container a:hover { color:var(--accent); }
+        
+        #mobile-toggle:checked ~ .mobile-menu-container { display:flex; }
+
+        /* ========== RESPONSIVE ========== */
+        @media (max-width:768px) {
+            .nav-links { display:none; }
+            .mobile-btn { display:block; }
+            .about-grid, .contact-grid { grid-template-columns:1fr; gap:2rem; }
+            .footer-content { grid-template-columns:1fr; gap:1.5rem; }
+            .projects-grid { grid-template-columns:1fr; }
+            .hero-buttons { flex-direction:column; align-items:center; }
+            .btn { width:100%; max-width:260px; justify-content:center; }
+            .cv-container { padding:1.25rem; }
+            section { padding:5rem 1rem 2rem; }
+            .skills-grid { grid-template-columns:1fr; }
+        }
+
+        .cv-container a { color:var(--accent); }
+        .cv-item strong { color:var(--txt); }
+        @media print {
+            .navbar, .mobile-menu-container, .hero-buttons, .contact-form, footer { display:none !important; }
+            section { display:block !important; opacity:1 !important; transform:none !important; min-height:auto; padding:1rem; }
+            #home { display:block !important; text-align:left; }
+            body { background:#fff; color:#111; }
+            .cv-container, .project-card, .skill-category, .timeline-card { color:#111; background:#fff; border:1px solid #ddd; }
+        }
+
+        .skill-category:nth-child(2) { border-top:3px solid var(--accent3); }
+        .skill-category:nth-child(3) { border-top:3px solid var(--accent4); }
+        .project-card:nth-child(2) { border-top:3px solid var(--accent3); }
+        .project-card:nth-child(3) { border-top:3px solid var(--accent4); }
+        .hobby-card:nth-child(2) { border-top:3px solid var(--accent3); }
+        .hobby-card:nth-child(3) { border-top:3px solid var(--accent4); }
+        .hobby-card:nth-child(4) { border-top:3px solid var(--accent); }
+        .hero-badge { background:rgba(8,127,206,0.08); }
+        .timeline-card:hover, .contact-method:hover { box-shadow:0 10px 26px rgba(20,33,61,0.08); }
+        .logo { text-shadow:0 2px 12px rgba(8,127,206,0.12); }
+        .cv-container { box-shadow:0 14px 40px rgba(20,33,61,0.08); }
+    
+/* ===== FINAL SECTION COLOR THEMES ===== */
+#about{background:linear-gradient(135deg,#f8fbff 0%,#eef5ff 52%,#17284d 52%,#0b1736 100%);border-radius:24px;margin:2rem auto;padding-left:clamp(1.5rem,5vw,4rem);padding-right:clamp(1.5rem,5vw,4rem)}
+#about .about-text{background:rgba(255,255,255,.82);border-radius:18px;padding:1.5rem}
+#about .about-image-frame{background:linear-gradient(145deg,#fff,#dcecff)}
+#education{background:linear-gradient(135deg,#09152f,#102451 55%,#182d60);color:#f5f8ff;border-radius:24px;margin:2rem auto;padding-left:clamp(1.5rem,5vw,4rem);padding-right:clamp(1.5rem,5vw,4rem)}
+#education .section-title{background:linear-gradient(135deg,#55c7ff,#9d8cff);-webkit-background-clip:text}
+#education .section-subtitle,#education .timeline-card p{color:#c8d3e8}
+#education .timeline-card{background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.14);box-shadow:0 10px 30px rgba(0,0,0,.18)}
+#education .timeline-date,#education .timeline-card .institution{color:#55c7ff}
+#education .timeline::before{background:linear-gradient(to bottom,#55c7ff,#8b6cff,transparent)}
+#skills{background:linear-gradient(135deg,#071326,#0d1d3d 50%,#15104a);color:#f5f8ff;border-radius:24px;margin:2rem auto;padding-left:clamp(1.5rem,5vw,4rem);padding-right:clamp(1.5rem,5vw,4rem)}
+#skills .section-title{background:linear-gradient(135deg,#38bdf8,#a78bfa,#fbbf24);-webkit-background-clip:text}
+#skills .section-subtitle{color:#bdc9df}
+#skills .skill-category{background:rgba(255,255,255,.065);border-color:rgba(255,255,255,.13);box-shadow:0 12px 32px rgba(0,0,0,.2)}
+#skills .skill-category h3,#skills .skill-header{color:#f5f8ff}
+#skills .skill-category:nth-child(1){border-top:3px solid #38bdf8}
+#skills .skill-category:nth-child(2){border-top:3px solid #a78bfa}
+#skills .skill-category:nth-child(3){border-top:3px solid #fbbf24}
+#skills .skill-bar{background:rgba(255,255,255,.12)}
+#skills .skill-progress{background:linear-gradient(90deg,#38bdf8,#8b5cf6)}
+#projects{background:linear-gradient(135deg,#f7fbff 0%,#edf4ff 50%,#14264b 50%,#0b1736 100%);border-radius:24px;margin:2rem auto;padding-left:clamp(1.5rem,5vw,4rem);padding-right:clamp(1.5rem,5vw,4rem)}
+#projects .project-card:nth-child(odd){background:rgba(255,255,255,.94);color:#14213d}
+#projects .project-card:nth-child(even){background:linear-gradient(145deg,#101f42,#182f60);color:#f5f8ff;border-color:rgba(255,255,255,.14)}
+#projects .project-card:nth-child(even) .project-content p{color:#c8d3e8}
+#projects .project-card:nth-child(even) .tech-tag{background:rgba(85,199,255,.12);color:#71d2ff}
+#hobbies{background:linear-gradient(135deg,#fff,#f2f7ff 60%,#eef0ff);border-radius:24px;margin:2rem auto;padding-left:clamp(1.5rem,5vw,4rem);padding-right:clamp(1.5rem,5vw,4rem)}
+#hobbies .hobby-card{background:rgba(255,255,255,.96);border-color:rgba(8,127,206,.12);box-shadow:0 10px 28px rgba(20,33,61,.07)}
+#cv{background:linear-gradient(135deg,#f6f9ff 0%,#eef4ff 48%,#122348 48%,#0b1736 100%);border-radius:24px;margin:2rem auto;padding-left:clamp(1.5rem,5vw,4rem);padding-right:clamp(1.5rem,5vw,4rem)}
+#cv .cv-container{background:linear-gradient(135deg,rgba(255,255,255,.97) 0%,rgba(255,255,255,.97) 58%,rgba(15,31,65,.98) 58%,rgba(11,23,54,.98) 100%);border-color:rgba(8,127,206,.14);box-shadow:0 18px 45px rgba(20,33,61,.12)}
+#cv .cv-section:nth-child(6),#cv .cv-section:nth-child(7),#cv .cv-section:nth-child(8){color:#f4f7fb}
+#cv .cv-section:nth-child(6) p,#cv .cv-section:nth-child(6) li,#cv .cv-section:nth-child(7) p,#cv .cv-section:nth-child(7) li,#cv .cv-section:nth-child(8) p,#cv .cv-section:nth-child(8) li{color:#c8d3e8}
+#contact{background:linear-gradient(135deg,#fff,#f4f9ff 55%,#f1edff);border-radius:24px;margin:2rem auto;padding-left:clamp(1.5rem,5vw,4rem);padding-right:clamp(1.5rem,5vw,4rem)}
+#contact .contact-method,#contact .contact-form{background:rgba(255,255,255,.94);box-shadow:0 10px 28px rgba(20,33,61,.06)}
+@media(max-width:768px){#about,#projects,#cv{background:linear-gradient(180deg,#f7fbff 0%,#edf4ff 58%,#15294f 58%,#0b1736 100%)}#cv .cv-container{background:linear-gradient(180deg,rgba(255,255,255,.97) 0%,rgba(255,255,255,.97) 58%,rgba(15,31,65,.98) 58%,rgba(11,23,54,.98) 100%)}}
+</style>
+</head>
+<body>
+
+    <!-- ==================== NAVIGATION ==================== -->
+    <input type="checkbox" id="mobile-toggle" class="mobile-toggle">
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#home" class="logo">&lt;UmarAbdulrahmanMuhammad/&gt;</a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About Me</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#hobbies">Hobbies</a></li>
+                <li><a href="#cv">CV</a></li>
+                <li><a href="#contact">Contact Me</a></li>
+            </ul>
+            <label for="mobile-toggle" class="mobile-btn">☰</label>
+        </div>
+    </nav>
+
+    <!-- ==================== MOBILE MENU ==================== -->
+    <div class="mobile-menu-container">
+        <a href="#home">Home</a>
+        <a href="#about">About Me</a>
+        <a href="#education">Education</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#hobbies">Hobbies</a>
+        <a href="#cv">CV</a>
+        <a href="#contact">Contact Me</a>
+    </div>
+
+    <!-- ==================== HOME ==================== -->
+    <section id="home">
+        <div class="hero-content">
+            <div class="hero-badge">🎓 B.Eng. Computer Engineering • 2021–2026</div>
+            <h1 class="hero-title">Hi, I'm <span class="highligt">Umar Abdulrahman Muhammad</span></h1>
+            <p class="hero-subtitle">&gt; <span>Control & Intelligent Systems • Artificial Intelligence</span></p>
+            <p class="hero-desc">
+                I am a Computer Engineering student at Ahmadu Bello University, Zaria, specializing in
+                Control and Intelligent Systems with a strong interest in Artificial Intelligence,
+                embedded systems, robotics, automation, and intelligent engineering solutions.
+            </p>
+            <div class="hero-buttons">
+                <a href="#projects" class="btn btn-primary">View My Projects →</a>
+                <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== ABOUT ME ==================== -->
+    <section id="about">
+        <h2 class="section-title">About Me</h2>
+        <p class="section-subtitle">Computer Engineering • Control & Intelligent Systems • Artificial Intelligence</p>
+        <div class="about-grid">
+            <div>
+                <img src="Abdul.jpg" alt="Umar UmarAbdulrahmanMuhammad">
+                <div class="about-stats">
+                    <div class="stat-card"><div class="stat-number">2026</div><div class="stat-label">Expected B.Eng. Completion</div></div>
+                    <div class="stat-card"><div class="stat-number">3+</div><div class="stat-label">Engineering Projects</div></div>
+                    <div class="stat-card"><div class="stat-number">6+</div><div class="stat-label">Professional Courses</div></div>
+                    <div class="stat-card"><div class="stat-number">2025</div><div class="stat-label">SIWES</div></div>
+                </div>
+            </div>
+            <div class="about-text">
+                <h3>🎓 Professional Profile</h3>
+                <p>
+                    Umar Abdulrahman Muhammad is a Computer Engineering student at Ahmadu Bello University,
+                    Zaria, with an academic focus on Control and Intelligent Systems and Artificial Intelligence.
+                    His interests combine intelligent computation with practical engineering, including embedded
+                    systems, robotics and automation, circuit design, biometric systems, and web programming.
+                </p>
+                <h3>🎯 Career Objective</h3>
+                <p>
+                    To build a strong professional career in Computer Engineering by applying control engineering,
+                    artificial intelligence, programming, embedded systems, and automation skills to develop
+                    reliable, intelligent, and practical solutions to real-world problems.
+                </p>
+                <h3>🚀 Professional Vision</h3>
+                <p>
+                    To become a competent engineer and technology professional capable of designing intelligent
+                    systems that improve security, automation, efficiency, and digital transformation.
+                </p>
+                <div class="about-values">
+                    <span class="value-tag">Control & Intelligent Systems</span>
+                    <span class="value-tag">Artificial Intelligence</span>
+                    <span class="value-tag">Robotics & Automation</span>
+                    <span class="value-tag">Embedded Systems</span>
+                    <span class="value-tag">Problem Solving</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== EDUCATIONAL BACKGROUND ==================== -->
+    <section id="education">
+        <h2 class="section-title">Educational Background</h2>
+        <p class="section-subtitle">Academic journey from primary education to Computer Engineering</p>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-date">2021 — 2026</div>
+                <div class="timeline-card">
+                    <h3>B.Eng. Computer Engineering</h3>
+                    <p class="institution">Ahmadu Bello University, Zaria</p>
+                    <p>Computer Engineering with focus on Control and Intelligent Systems</p>
+                    <div class="achievements">
+                        <span class="achievement-tag">🎓 Final-Year Student</span>
+                        <span class="achievement-tag">🤖 Artificial Intelligence</span>
+                        <span class="achievement-tag">⚙️ Control & Intelligent Systems</span>
+                    </div>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-date">2018 — 2020</div>
+                <div class="timeline-card">
+                    <h3>Diploma in Computer System Engineerig</h3>
+                    <p class="institution">Iya Abubakar Institute of Computing and ICT, Ahmadu Bello University, Zaria</p>
+                    <p>Foundation in computing, information and communication technologies, and practical digital skills.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-date">2015 — 2017</div>
+                <div class="timeline-card">
+                    <h3>Secondary Education</h3>
+                    <p class="institution">Governor Secondary School, Basawa Barracks</p>
+                    <p>Completed senior secondary education.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-date">2013 — 2015</div>
+                <div class="timeline-card">
+                    <h3>Junior Secondary Education</h3>
+                    <p class="institution">Demonstration Secondary School</p>
+                    <p>Completed junior secondary education.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-date">2006 — 2012</div>
+                <div class="timeline-card">
+                    <h3>Primary Education</h3>
+                    <p class="institution">Ahmadu Bello University Staff School, Main Campus</p>
+                    <p>Completed primary education.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== TECHNICAL SKILLS ==================== -->
+    <section id="skills">
+        <h2 class="section-title">Technical Skills</h2>
+        <p class="section-subtitle">Core competencies, engineering tools, and emerging technology skills</p>
+        <div class="skills-grid">
+            <div class="skill-category">
+                <h3><span class="icon">⚙️</span> Engineering & Embedded Systems</h3>
+                <div class="skill-item"><div class="skill-header"><span>Circuit Design & Simulation</span><span>Core</span></div><div class="skill-bar"><div class="skill-progress" style="width: 90%;"></div></div></div>
+                <div class="skill-item"><div class="skill-header"><span>Proteus & Tinkercad</span><span>Core</span></div><div class="skill-bar"><div class="skill-progress" style="width: 88%;"></div></div></div>
+                <div class="skill-item"><div class="skill-header"><span>Embedded Systems & Prototyping</span><span>Core</span></div><div class="skill-bar"><div class="skill-progress" style="width: 85%;"></div></div></div>
+                <div class="skill-item"><div class="skill-header"><span>Robotics & Automation</span><span>Core</span></div><div class="skill-bar"><div class="skill-progress" style="width: 82%;"></div></div></div>
+            </div>
+            <div class="skill-category">
+                <h3><span class="icon">🤖</span> AI & Intelligent Systems</h3>
+                <div class="skill-item"><div class="skill-header"><span>Artificial Intelligence</span><span>Core</span></div><div class="skill-bar"><div class="skill-progress" style="width: 85%;"></div></div></div>
+                <div class="skill-item"><div class="skill-header"><span>Generative AI</span><span>Core</span></div><div class="skill-bar"><div class="skill-progress" style="width: 82%;"></div></div></div>
+                <div class="skill-item"><div class="skill-header"><span>Prompt Engineering & Application</span><span>Core</span></div><div class="skill-bar"><div class="skill-progress" style="width: 88%;"></div></div></div>
+            </div>
+            <div class="skill-category">
+                <h3><span class="icon">💻</span> Programming & Web</h3>
+                <div class="skill-item"><div class="skill-header"><span>C++</span><span>Core</span></div><div class="skill-bar"><div class="skill-progress" style="width: 82%;"></div></div></div>
+                <div class="skill-item"><div class="skill-header"><span>Python</span><span>Core</span></div><div class="skill-bar"><div class="skill-progress" style="width: 80%;"></div></div></div>
+                <div class="skill-item"><div class="skill-header"><span>Web Programming</span><span>Core</span></div><div class="skill-bar"><div class="skill-progress" style="width: 78%;"></div></div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== PROJECTS ==================== -->
+    <section id="projects">
+        <h2 class="section-title">Projects</h2>
+        <p class="section-subtitle">Selected academic and engineering projects</p>
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-image"><span class="project-badge">Final Year Project</span>🔐</div>
+                <div class="project-content">
+                    <h3>Design and Implementation of Generic High-Speed Multimodal Facial & Fingerprint Biometric Attendance System</h3>
+                    <p><strong>Problem addressed:</strong> Improve attendance authentication by combining facial and fingerprint biometrics for stronger identity verification and efficient attendance recording.</p>
+                    <p><strong>Hardware / Technologies:</strong> Raspberry Pi 3, webcam, Mantra MFS100 fingerprint sensor, Arduino Nano, Python, biometric recognition, embedded systems.</p>
+                    <p><strong>Key outcome:</strong> Developed and tested a multimodal authentication approach using facial and fingerprint verification for attendance management.</p>
+                    <div class="project-tech"><span class="tech-tag">Raspberry Pi</span><span class="tech-tag">Python</span><span class="tech-tag">Fingerprint</span><span class="tech-tag">Facial Recognition</span></div>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-image">🚨</div>
+                <div class="project-content">
+                    <h3>Design and Simulation of Microcontroller-Based Security Alarm System Using LDR</h3>
+                    <p><strong>Problem addressed:</strong> Provide a simple electronic security solution capable of detecting changes in light conditions and triggering an alarm.</p>
+                    <p><strong>Hardware / Technologies:</strong> Microcontroller, Light Dependent Resistor (LDR), buzzer/alarm circuit, resistors, Proteus simulation and C programming.</p>
+                    <p><strong>Key outcome:</strong> Designed and simulated a functional LDR-based security alarm system for intrusion/event detection.</p>
+                    <div class="project-tech"><span class="tech-tag">Microcontroller</span><span class="tech-tag">LDR</span><span class="tech-tag">Proteus</span><span class="tech-tag">C/C++</span></div>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-image">💧</div>
+                <div class="project-content">
+                    <h3>Simulation Smart Water Level Control System</h3>
+                    <p><strong>Problem addressed:</strong> Reduce manual monitoring of water levels and support automatic control of water filling.</p>
+                    <p><strong>Hardware / Technologies:</strong> Microcontroller/Arduino, water-level sensing arrangement, pump/actuator, control logic and circuit simulation.</p>
+                    <p><strong>Key outcome:</strong> Designed a smart control concept that monitors water level and automatically manages the filling process based on defined conditions.</p>
+                    <div class="project-tech"><span class="tech-tag">Arduino</span><span class="tech-tag">Sensors</span><span class="tech-tag">Automation</span><span class="tech-tag">Control</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== HOBBIES ==================== -->
+    <section id="hobbies">
+        <h2 class="section-title">Hobbies & Interests</h2>
+        <p class="section-subtitle">Professional interests and activities</p>
+        <div class="hobbies-grid">
+            <div class="hobby-card"><span class="hobby-icon">🤖</span><h3>Robotics & Automation</h3><p>Exploring intelligent machines, automation concepts, and practical engineering systems.</p></div>
+            <div class="hobby-card"><span class="hobby-icon">🧠</span><h3>Artificial Intelligence</h3><p>Learning and experimenting with AI, generative AI, machine learning, and prompt engineering.</p></div>
+            <div class="hobby-card"><span class="hobby-icon">🔧</span><h3>Engineering Prototyping</h3><p>Designing, simulating, testing, and improving electronic and embedded-system prototypes.</p></div>
+            <div class="hobby-card"><span class="hobby-icon">📚</span><h3>Technology Research</h3><p>Keeping up with emerging technologies and practical solutions in Computer Engineering.</p></div>
+        </div>
+    </section>
+
+    <!-- ==================== CURRICULUM VITAE ==================== -->
+    <section id="cv">
+        <h2 class="section-title">Curriculum Vitae</h2>
+        <p class="section-subtitle">Professional profile and qualifications</p>
+        <div class="cv-container">
+            <div class="cv-header">
+                <h2>Umar Abdulrahman Muhammad</h2>
+                <p>Computer Engineering | Control & Intelligent Systems | Artificial Intelligence</p>
+                <p>Zaria, Kaduna State, Nigeria • 09021656778 • uabdulrahman1919@gmail.com</p>
+            </div>
+
+            <div class="cv-section">
+                <h3>Professional Profile</h3>
+                <p>Computer Engineering student at Ahmadu Bello University, Zaria, specializing in Control and Intelligent Systems and Artificial Intelligence. Interested in developing intelligent, reliable and practical solutions through embedded systems, robotics and automation, programming, circuit design, generative AI and web technologies.</p>
+            </div>
+
+            <div class="cv-section">
+                <h3>Career Objective</h3>
+                <p>To contribute to innovative engineering and technology projects while continuously developing professional expertise in control systems, artificial intelligence, embedded systems, automation and intelligent computing.</p>
+            </div>
+
+            <div class="cv-section">
+                <h3>Education</h3>
+                <div class="cv-item"><h4>B.Eng. Computer Engineering</h4><div class="cv-meta">Ahmadu Bello University, Zaria • 2021–2026</div><p>Focus: Control and Intelligent Systems & Artificial Intelligence.</p></div>
+                <div class="cv-item"><h4>Diploma in Computing / ICT</h4><div class="cv-meta">Iya Abubakar Institute of Computing and ICT, Ahmadu Bello University, Zaria • 2018–2020</div></div>
+                <div class="cv-item"><h4>Secondary Education</h4><div class="cv-meta">Governor Secondary School, Basawa Barracks • 2015–2017</div></div>
+                <div class="cv-item"><h4>Junior Secondary Education</h4><div class="cv-meta">Demonstration Secondary School • 2013–2015</div></div>
+                <div class="cv-item"><h4>Primary Education</h4><div class="cv-meta">Ahmadu Bello University Staff School, Main Campus • 2006–2012</div></div>
+            </div>
+
+            <div class="cv-section">
+                <h3>Technical Skills</h3>
+                <ul>
+                    <li>Circuit Design and Simulation — Proteus & Tinkercad</li>
+                    <li>Artificial Intelligence & Generative AI</li>
+                    <li>Prompt Engineering and Application</li>
+                    <li>C++ and Python</li>
+                    <li>Web Programming</li>
+                    <li>Robotics and Automation</li>
+                    <li>Embedded Systems and Prototyping</li>
+                </ul>
+            </div>
+
+            <div class="cv-section">
+                <h3>Certifications & Training</h3>
+                <ul>
+                    <li>Artificial Intelligence — Huawei</li>
+                    <li>Prompt Engineering and Application — Simplilearn</li>
+                    <li>Generative AI — Huawei</li>
+                    <li>Python — Simplilearn</li>
+                    <li>PCB — Alison</li>
+                    <li>C++ — Simplilearn</li>
+                    <li>Machine Learning — UniAthena</li>
+                    <li>Presentation in IIOE</li>
+                </ul>
+            </div>
+
+            <div class="cv-section">
+                <h3>Industrial / Practical Experience</h3>
+                <div class="cv-item"><h4>SIWES</h4><div class="cv-meta">Department of Computer Engineering, Ahmadu Bello University, Zaria • 2025</div><p>Practical exposure to Computer Engineering activities and technical problem-solving.</p></div>
+                <div class="cv-item"><h4>SWEP</h4><div class="cv-meta">Faculty of Engineering, Ahmadu Bello University, Zaria</div><p>Practical engineering training and hands-on technical experience.</p></div>
+            </div>
+
+            <div class="cv-section">
+                <h3>Core Strengths</h3>
+                <ul>
+                    <li>Problem solving and analytical thinking</li>
+                    <li>Engineering design and prototyping</li>
+                    <li>Continuous learning and technology exploration</li>
+                    <li>Team collaboration and technical communication</li>
+                    <li>Interest in innovation and real-world engineering applications</li>
+                </ul>
+            </div>
+
+            <div class="cv-download">
+                <a href="#contact" class="btn btn-primary">Contact Me for Full CV →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== CONTACT ==================== -->
+    <section id="contact">
+        <h2 class="section-title">Contact Me</h2>
+        <p class="section-subtitle">Let's connect for engineering, technology, and collaboration opportunities</p>
+        <div class="contact-grid">
+            <div class="contact-info">
+                <h3>Get In Touch</h3>
+                <p>I am open to professional opportunities, engineering collaborations, technology projects, and learning opportunities related to Computer Engineering, Control and Intelligent Systems, Artificial Intelligence, automation, and embedded systems.</p>
+                <div class="contact-methods">
+                    <div class="contact-method"><div class="icon">📧</div><div class="info"><h4>Email</h4><p><a href="mailto:uabdulrahman1919@gmail.com" style="color:inherit;text-decoration:none;">uabdulrahman1919@gmail.com</a></p></div></div>
+                    <div class="contact-method"><div class="icon">📱</div><div class="info"><h4>Phone</h4><p>09021656778</p></div></div>
+                    <div class="contact-method"><div class="icon">📍</div><div class="info"><h4>Location</h4><p>Zaria, Kaduna State, Nigeria</p></div></div>
+                    <div class="contact-method"><div class="icon">in</div><div class="info"><h4>LinkedIn</h4><p><a href="https://www.linkedin.com/in/umar-abdulrahman-muhammad-613b51418" target="_blank" rel="noopener" style="color:inherit;">View LinkedIn Profile</a></p></div></div>
+                </div>
+            </div>
+            <div class="contact-form">
+                <form onsubmit="event.preventDefault(); alert('Thank you for your message. Please contact Umar directly by email or phone.');">
+                    <div class="form-group"><label>Your Name</label><input type="text" placeholder="Enter your name" required></div>
+                    <div class="form-group"><label>Your Email</label><input type="email" placeholder="Enter your email" required></div>
+                    <div class="form-group"><label>Message</label><textarea placeholder="Write your message here..." required></textarea></div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer>
+        <div class="footer-content">
+                <span class="highlight">Umar Abdulrahman Muhammad</span>
+                <p>Computer Engineering student specializing in Control & Intelligent Systems and Artificial Intelligence.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Connect</h4>
+                <ul>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#cv">CV</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Umar Abdulrahman Muhammad. All rights reserved.</p>
+            <p>Designed with HTML & CSS • Professional Portfolio</p>
+        </div>
+    </footer>
+
+</body>
+</html>
